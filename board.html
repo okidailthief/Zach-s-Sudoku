@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  
+  <link rel="stylesheet" href="styles.css">
+  
+ </head>
+ <body style="background-color:yellow;" onload="retrieveState();">
+
+ 
+ <center>
+<div class="title" style="width: 400px; font-family: arial;">Let's Play Sudoku!</div>
+  </br>Select Difficulty:
+  <select id="diff">
+   <option value='1'> 1</option>
+   <option value='2'> 2</option>
+   <option value='3'> 3</option>
+   <option value='4'> 4</option>
+   <option value='5'> 5</option>
+  </select>
+  <div class=button onclick="newGame()"><button id="newgame" type="submit">New Game</button></div>
+  <div class=button onclick="clearBoard()"><button id="newgame" type="submit">Clear Board</button></div>
+  
+  </br></center>
+
+  
+  
+<center>
+ <form action="checksolution.php">
+<div style="background-color: red;" class="table">
+   <div class="row">
+    <div class="cell" id="0,0" contenteditable></div>
+    <div class="cell" id="0,1" contenteditable></div>
+    <div class="cell" id="0,2" style="border-right: 4px solid blue;" contenteditable></div>
+    <div class="cell" id="0,3" contenteditable></div>
+    <div class="cell" id="0,4" contenteditable></div>
+    <div class="cell" id="0,5" style="border-right: 4px solid blue;" contenteditable></div>
+    <div class="cell" id="0,6" contenteditable></div>
+    <div class="cell" id="0,7" contenteditable></div>
+    <div class="cell" id="0,8" contenteditable></div>
+  </div>
+   <div class="row">
+    <div id="1,0" class="cell" contenteditable></div>
+    <div id="1,1" class="cell" contenteditable></div>
+    <div id="1,2" class="cell" style="border-right: 4px solid blue;" contenteditable></div>
+    <div id="1,3" class="cell" contenteditable></div>
+    <div id="1,4" class="cell" contenteditable></div>
+    <div id="1,5" class="cell" style="border-right: 4px solid blue;" contenteditable></div>
+    <div id="1,6" class="cell" contenteditable></div>
+    <div id="1,7" class="cell" contenteditable></div>
+    <div id="1,8" class="cell" contenteditable></div>
+  </div>
+   <div class="row">
+    <div id="2,0" class="cell" style="border-bottom: 4px solid blue;" contenteditable></div>
+    <div id="2,1" class="cell" style="border-bottom: 4px solid blue;" contenteditable></div>
+    <div id="2,2" class="cell" style="border-bottom: 4px solid blue; border-right: 4px solid blue" contenteditable></div>
+    <div id="2,3" class="cell" style="border-bottom: 4px solid blue;" contenteditable></div>
+    <div id="2,4" class="cell" style="border-bottom: 4px solid blue;" contenteditable></div>
+    <div id="2,5" class="cell" style="border-bottom: 4px solid blue; border-right: 4px solid blue" contenteditable></div>
+    <div id="2,6" class="cell" style="border-bottom: 4px solid blue;" contenteditable></div>
+    <div id="2,7" class="cell" style="border-bottom: 4px solid blue;" contenteditable></div>
+    <div id="2,8" class="cell" style="border-bottom: 4px solid blue;" contenteditable></div>
+  </div>
+  
+   <div class="row">
+    <div id="3,0" class="cell" contenteditable></div>
+    <div id="3,1" class="cell" contenteditable></div>
+    <div id="3,2" class="cell" style="border-right: 4px solid blue;" contenteditable></div>
+    <div id="3,3" class="cell" contenteditable></div>
+    <div id="3,4" class="cell" contenteditable></div>
+    <div id="3,5" class="cell" style="border-right: 4px solid blue;" contenteditable></div>
+    <div id="3,6" class="cell" contenteditable></div>
+    <div id="3,7" class="cell" contenteditable></div>
+    <div id="3,8" class="cell" contenteditable></div>
+  </div>
+   <div class="row">
+    <div id="4,0" class="cell" contenteditable></div>
+    <div id="4,1" class="cell" contenteditable></div>
+    <div id="4,2" class="cell" style="border-right: 4px solid blue;" contenteditable></div>
+    <div id="4,3" class="cell" contenteditable></div>
+    <div id="4,4" class="cell" contenteditable></div>
+    <div id="4,5" class="cell" style="border-right: 4px solid blue;" contenteditable></div>
+    <div id="4,6" class="cell" contenteditable></div>
+    <div id="4,7" class="cell" contenteditable></div>
+    <div id="4,8" class="cell" contenteditable></div>
+  </div>
+   <div class="row">
+    <div id="5,0" class="cell" style="border-bottom: 4px solid blue;" contenteditable></div>
+    <div id="5,1" class="cell" style="border-bottom: 4px solid blue;" contenteditable></div>
+    <div id="5,2" class="cell" style="border-bottom: 4px solid blue; border-right: 4px solid blue" contenteditable></div>
+    <div id="5,3" class="cell" style="border-bottom: 4px solid blue;" contenteditable></div>
+    <div id="5,4" class="cell" style="border-bottom: 4px solid blue;" contenteditable></div>
+    <div id="5,5" class="cell" style="border-bottom: 4px solid blue; border-right: 4px solid blue" contenteditable></div>
+    <div id="5,6" class="cell" style="border-bottom: 4px solid blue;" contenteditable></div>
+    <div id="5,7" class="cell" style="border-bottom: 4px solid blue;" contenteditable></div>
+    <div id="5,8" class="cell" style="border-bottom: 4px solid blue;" contenteditable></div>
+  </div>
+  
+   <div class="row">
+    <div id="6,0" class="cell" contenteditable></div>
+    <div id="6,1" class="cell" contenteditable></div>
+    <div id="6,2" class="cell" style="border-right: 4px solid blue;" contenteditable></div>
+    <div id="6,3" class="cell" contenteditable></div>
+    <div id="6,4" class="cell" contenteditable></div>
+    <div id="6,5" class="cell" style="border-right: 4px solid blue;" contenteditable></div>
+    <div id="6,6" class="cell" contenteditable></div>
+    <div id="6,7" class="cell" contenteditable></div>
+    <div id="6,8" class="cell" contenteditable></div>
+  </div>
+   <div class="row">
+    <div id="7,0" class="cell" contenteditable></div>
+    <div id="7,1" class="cell" contenteditable></div>
+    <div id="7,2" class="cell" style="border-right: 4px solid blue;" contenteditable></div>
+    <div id="7,3" class="cell" contenteditable></div>
+    <div id="7,4" class="cell" contenteditable></div>
+    <div id="7,5" class="cell" style="border-right: 4px solid blue;" contenteditable></div>
+    <div id="7,6" class="cell" contenteditable></div>
+    <div id="7,7" class="cell" contenteditable></div>
+    <div id="7,8" class="cell" contenteditable></div>
+  </div>
+   <div class="row">
+    <div id="8,0" class="cell" contenteditable></div>
+    <div id="8,1" class="cell" contenteditable></div>
+    <div id="8,2" class="cell" style="border-right: 4px solid blue;" contenteditable></div>
+    <div id="8,3" class="cell" contenteditable></div>
+    <div id="8,4" class="cell" contenteditable></div>
+    <div id="8,5" class="cell" style="border-right: 4px solid blue;" contenteditable></div>
+    <div id="8,6" class="cell" contenteditable></div>
+    <div id="8,7" class="cell" contenteditable></div>
+    <div id="8,8" class="cell" contenteditable></div>
+  </div>
+  
+  
+  </center> 
+
+  </form></table></br>
+<center>
+ <div class=button><button type="submit" onclick="getHint()">Get Hint</button></div>
+ </br>
+ Last Correct Move: 
+ <div id="timestamp"></div>
+ 
+
+
+<div id="testdiv" type="text"></div>
+</html></center>
+
+</body>
+
+<script>
+//adds event listeners to each cell
+for(var row = 0; row < 9; row++){
+ for(var col = 0; col < 9; col++){
+  var rowStr = row.toString(); 
+  var colStr = col.toString();
+  document.getElementById(rowStr + ',' + colStr).addEventListener('keyup', function(){
+   checkCell(this);
+   checkVal(this);
+   });
+ }
+}
+
+function checkCell(cell){
+ var num = parseInt(document.getElementById(cell.id).innerHTML);
+ if(num < 1 || num > 9 || isNaN(num)){
+  alert("please enter a number between 1 and 9 inclusively");
+ document.getElementById(cell.id).innerHTML = "";
+ }
+}
+
+function checkVal(cell){
+ var num = parseInt(document.getElementById(cell.id).innerHTML);
+ var xhttp;
+   xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function(){
+
+		if(this.readyState == 4 && this.status == 200) {
+		 //retrieves 2 dimensional array representing solution and assigns it to num
+		 var sol = JSON.parse(this.responseText);
+		 //document.getElementById('testdiv').innerHTML = sol;
+		 var r = parseInt(cell.id.charAt(0));
+		 var c = parseInt(cell.id.charAt(2));
+		 //document.getElementById('testdiv').innerHTML = r + c;
+		 if(num != parseInt(sol[r][c])){
+		  alert("incorrect value");
+   document.getElementById(cell.id).innerHTML = "";
+		 }
+		 else{
+		  document.getElementById(cell.id).setAttribute("contenteditable", false);
+		  updateState();
+		 }
+		}
+  };
+  xhttp.open("GET", "get_sol.php", true);
+		xhttp.send();
+}
+
+function clearBoard(){
+ for(var row = 0; row < 9; row++){
+    for(var col = 0; col < 9; col++){
+     var rowStr = row.toString();
+     var colStr = col.toString();
+		 document.getElementById(rowStr + "," + colStr).innerHTML = "";
+		 document.getElementById(rowStr + "," + colStr).setAttribute("contenteditable", true);
+    }
+		 }
+		 updateState();
+}
+
+function storeTime(time){
+ var xhttp;
+
+	xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function(){
+		if(this.readyState == 4 && this.status == 200) {
+
+			}
+		};
+		xhttp.open("GET", 'update_time.php?t='+time, true);
+		xhttp.send();
+		}
+
+function recallTime(){
+ var xhttp;
+
+	xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function(){
+		if(this.readyState == 4 && this.status == 200) {
+			return this.responseText;
+			}
+		};
+		xhttp.open("GET", 'get_time.php', true);
+		xhttp.send();
+		}
+
+function getHint(){
+ while(true){
+    var row = getRandomIntInclusive(0, 8);
+		  var col = getRandomIntInclusive(0, 8);
+		  var randRow = row.toString();
+		  var randCol = col.toString();
+		  if(document.getElementById(randRow + "," + randCol).innerHTML == ""){
+		  var xhttp;
+	   xhttp = new XMLHttpRequest();
+	   xhttp.onreadystatechange = function(){
+		   if(this.readyState == 4 && this.status == 200) {
+			   document.getElementById(randRow + "," + randCol).innerHTML = JSON.parse(this.responseText);
+			   document.getElementById(randRow + "," + randCol).setAttribute("contenteditable", false);
+			   updateState();
+			   }
+		   };
+		    xhttp.open("GET", "gethint.php?r="+row+"&c="+col, true);
+		    xhttp.send();
+		    
+		    break;
+		}
+ }
+
+}
+
+function retrieveState(){
+ 
+     var xhttp;
+
+	xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function(){
+		if(this.readyState == 4 && this.status == 200) {
+		 var num = JSON.parse(this.responseText);
+		 //document.getElementById("testdiv").innerHTML = num;
+		 
+		 
+		 for(var row = 0; row < 9; row++){
+    for(var col = 0; col < 9; col++){
+     var rowStr = row.toString();
+     var colStr = col.toString();
+		 if(num[row][col] != 0){
+			document.getElementById(rowStr + "," + colStr).innerHTML = num[row][col];
+			document.getElementById(rowStr + "," + colStr).setAttribute("contenteditable", false);
+			}
+			else{
+			 document.getElementById(rowStr + "," + colStr).innerHTML = "";
+			}
+		}
+		 }
+
+		}
+		};
+		xhttp.open("GET", "retrieve_state.php", true);
+		xhttp.send();
+		//document.getElementById('timestamp').innerHTML = recallTime();
+
+//updateState();
+}
+     
+function updateState(){
+ for(var row = 0; row < 9; row++){
+    for(var col = 0; col < 9; col++){
+     var rowStr = row.toString();
+     var colStr = col.toString();
+     var val;
+     if(document.getElementById(rowStr + "," + colStr).innerHTML == ""){
+      val = 0;
+     }
+     else{
+      val = parseInt(document.getElementById(rowStr + "," + colStr).innerHTML)
+     }
+		 var xhttp;
+
+  	xhttp = new XMLHttpRequest();
+	  xhttp.onreadystatechange = function(){
+		  if(this.readyState == 4 && this.status == 200) {
+			  
+			 }
+		};
+		xhttp.open("GET", "update_board.php?r="+row+"&c="+col+"&v="+val, true);
+		xhttp.send();
+		}
+    }
+    var d = new Date();
+    var time = d.getHours() +":"+ d.getMinutes() +":"+ d.getSeconds();
+    document.getElementById('timestamp').innerHTML = time;
+    //storeTime(time);
+
+}
+
+function newGame(){
+ //clears html board for new game
+   for(var row = 0; row < 9; row++){
+    for(var col = 0; col < 9; col++){
+     var rowStr = row.toString();
+     var colStr = col.toString();
+		 document.getElementById(rowStr + "," + colStr).innerHTML = "";
+    }
+		 }
+   var xhttp;
+   xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function(){
+
+		if(this.readyState == 4 && this.status == 200) {
+		 //retrieves 2 dimensional array representing solution and assigns it to num
+		 var sol = JSON.parse(this.responseText);
+		 var rowStart;
+		 var colStart;
+		 var difficulty = document.getElementById("diff").options[document.getElementById("diff").selectedIndex].value;
+		 
+		 for(var square = 1; square < 10; square++){
+		  if(square == 1 || square == 4 || square == 7){
+        colStart = 0;
+    }
+    if(square == 2 ||square == 5 || square == 8){
+        colStart = 3;
+    }
+    if(square == 3 || square == 6 || square == 9){
+        colStart = 6;
+    }
+    //finds square start row index
+    if(square == 1 || square == 2 || square == 3){
+        rowStart = 0;
+    }
+    if(square == 4 || square == 5 || square == 6){
+        rowStart = 3;
+    }
+    if(square == 7 || square == 8 || square == 9){
+        rowStart = 6;
+    }
+    //places value from solution in each cell
+   for(var row = rowStart; row < rowStart+3; row++){
+    for(var col = colStart; col < colStart+3; col++){
+     var rowStr = row.toString();
+     var colStr = col.toString();
+		 document.getElementById(rowStr + "," + colStr).innerHTML += sol[row][col];
+    }
+		 }
+		 //removes cells based on difficulty
+		 var i = 0;
+		 while(i < difficulty){
+		  var randRow = (getRandomIntInclusive(rowStart, rowStart+2)).toString();
+		  var randCol = (getRandomIntInclusive(colStart, colStart+2)).toString();
+		   if(document.getElementById(randRow + "," + randCol).innerHTML != ""){
+		   document.getElementById(randRow + "," + randCol).innerHTML = "";
+		   i++;
+		  }
+		 }
+		 }
+		 updateState();
+		 
+		 for(var row = 0; row < 9; row++){
+    for(var col = 0; col < 9; col++){
+     var rowStr = row.toString();
+     var colStr = col.toString();
+		 if(document.getElementById(rowStr + "," + colStr).innerHTML != ""){
+		  document.getElementById(rowStr + "," + colStr).setAttribute("contenteditable", false);
+		 }
+		 else{
+		  document.getElementById(rowStr + "," + colStr).setAttribute("contenteditable", true);
+		 }
+    }
+		 }
+document.getElementById('timestamp').innerHTML = "";
+   }
+   
+		};
+		 xhttp.open("GET", "populate_board.php", true);
+		//xhttp.open("GET", "populate_board.php?r="+row+"&c="+col, true);
+		xhttp.send();
+
+}
+
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;  
+}
+
+</script>
+

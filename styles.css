@@ -1,0 +1,57 @@
+.body{
+  background-color: yellow;
+}
+
+.table
+{
+  display: table;
+  background-color: yellow;
+}
+div.title
+{
+  display: block;
+  text-align: center;
+  text-align: auto;
+  font-weight: bold;
+  font-size: larger;
+  font-family: Arial;
+  
+}
+.row
+{
+  display: table-row;
+  font-size: 20px;
+  font-family: Arial;
+
+}
+.cell{
+  font-family: Arial;
+  padding: 5px;
+  font-size: inherit;
+  text-align: center;
+  vertical-align: center;
+  width: 30px;
+  height: 30px;
+  display:table-cell;
+  border: solid;
+  border-width: thin;
+  overflow: hidden;
+  
+  font-weight: bold;
+
+
+}
+div input[type=text]{
+  font-size: 16px;
+  display: inline;
+  text-align: center;
+  vertical-align: center;
+  border:0px;
+  width:50px;
+  height: 100%;
+  
+}
+
+
+
+
